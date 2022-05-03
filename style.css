@@ -1,0 +1,42 @@
+
+:root {
+    --primary-color-brand-green : #00856F;
+    --primary-color-brand-green-light: #DCE9E2;
+    --primary-color-brand-green-light-02: #F7F9F9;
+    --primary-color-brand-beige: #FFFAF1;
+    --secondary-color-gray-headline: #212529;
+    --secondary-color-gray-paragraph: #495057;
+    --secondary-color-white: FFFFFF;
+
+    font-size: 62,5%; /* 1rem = 10px */
+}
+
+
+body {
+    font-family: 'DM Sans';
+    font-size: 1.6rem;
+
+    text-align: center;
+}
+h1 {
+    font-size: 3.4rem;
+    color: var(--secondary-color-gray-headline); 
+    line-height: 130%;   
+}
+
+h4 {
+    font-size: 1.4rem;
+    color: var(--primary-color-brand-green);
+}
+
+p{
+    font-size: 1.8rem;
+    line-height: 150%;
+    font-weight: 400;
+    color: var(--secondary-color-gray-paragraph);
+}
+
+button {
+    background: var(--primary-color-brand-green) ;
+}
+
