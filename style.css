@@ -1,4 +1,4 @@
-
+/* ======================== GERAL ========================*/
 *{
     margin: 0;
     box-sizing: border-box;
@@ -13,9 +13,10 @@
     --secondary-color-gray-paragraph: #495057;
     --secondary-color-white: #FFFFFF;
 
-    font-size: 62,5%; /* 1rem = 10px */
-}
+    --nav-height: 7.2rem;
 
+    font-size: 62.5%; /* 1rem = 10px */
+}
 
 body {
     font-family: 'DM Sans';
@@ -24,28 +25,45 @@ body {
     text-align: center;
 }
 
-header {
+.capadura {
     width: 37.5rem;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 4.1rem;
-
+    padding-inline: 2.4rem;
 }
 
-h1 {
+/* ======================== HEADER ================================*/
+header {
+     margin-top: calc(4.1rem + var(--nav-height));
+
+}
+header::before {
+    content: "";
+    width: 100vw;
+    height: calc(108rem + var(--nav-height));
+    background-color: var(--primary-color-brand-green-light);
+    display: block;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+header h1 {
     font-size: 3.4rem;
     color: var(--secondary-color-gray-headline); 
     line-height: 130%;    
     margin-bottom: 2.4rem;
 }
 
-h4 {
+header h4 {
     font-size: 1.4rem;
     color: var(--primary-color-brand-green);
     margin-bottom: 1.6rem;
 }
 
-p{
+header p{
     font-size: 1.8rem;
     line-height: 150%;
     font-weight: 400;
@@ -53,7 +71,7 @@ p{
     margin-bottom: 3.2rem;
 }
 
-button {
+header button {
     background: var(--primary-color-brand-green);
 
     border: none;
@@ -73,10 +91,73 @@ button {
     justify-content: center;
     gap: 1.6rem;
 
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline: auto;   /* pode usar os comandos margin-right: auto; margin-left: auto; */
 }
 
-img{
+header img{
     image-rendering: auto;
+    width: 26.4rem;
+    display: block;
+    margin-inline: auto;
+    object-position: 0 2rem;
 }
+
+.box-principal {
+    width: 32.7rem;
+    padding-block: 4rem; /* simplificando os comandos padding top e botton */
+    margin-inline: auto;
+    
+    background-color: var(--primary-color-brand-beige);
+    border: 1px solid var(--primary-color-brand-green-light);
+    border-radius: 0.6rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6rem;
+}
+
+.box-segundario h3{
+    font-size: 4.8rem;
+    color: var(--secondary-color-gray-headline);
+    line-height: 130%;
+
+    margin-bottom: 0.4rem;
+}
+
+.box-segundario p {
+    margin: 0;
+    color: var(--primary-color-brand-green);
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+}
+
+/* ======================== NAVEGAÇÃO ================================*/
+
+nav{
+    display: flex;
+    height: var(--nav-height);
+
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+}
+nav.capadura{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+nav.rolagem {
+    background: var(--primary-color-brand-green);
+    width: 100vw;
+}
+
+
+
+
+
+
+
