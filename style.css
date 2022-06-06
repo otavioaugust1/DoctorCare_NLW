@@ -134,7 +134,7 @@ header img{
 
 /* ======================== NAVEGAÇÃO ================================*/
 
-nav{
+nav {
     display: flex;
     height: var(--nav-height);
 
@@ -143,11 +143,10 @@ nav{
     left: 50%;
     transform: translate(-50%);
 }
-nav.capadura{
+nav.capadura {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
 
 nav.rolagem {
@@ -155,9 +154,13 @@ nav.rolagem {
     width: 100vw;
 }
 
+nav.img_logo svg:nth-child(1) path{
+    fill: var(--secondary-color-white);
+}
 
-
-
+nav.img_logo svg:nth-child(2) path{
+    stroke: var(--secondary-color-white);
+}
 
 
 
