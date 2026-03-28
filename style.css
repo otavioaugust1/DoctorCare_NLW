@@ -1,166 +1,692 @@
-/* ======================== GERAL ========================*/
-*{
+/* ================================================================
+   DOCTORCARE - ESTILOS PRINCIPAIS
+   NLW (Next Level Week) - Rocketseat
+================================================================ */
+
+/* ======================== RESET & BASE ================================*/
+* {
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 :root {
-    --primary-color-brand-green : #00856F;
-    --primary-color-brand-green-light: #DCE9E2;
-    --primary-color-brand-green-light-02: #F7F9F9;
-    --primary-color-brand-beige: #FFFAF1;
-    --secondary-color-gray-headline: #212529;
-    --secondary-color-gray-paragraph: #495057;
-    --secondary-color-white: #FFFFFF;
+    --color-brand-green:     #00856F;
+    --color-brand-light:     #DCE9E2;
+    --color-brand-beige:     #FFFAF1;
+    --color-brand-off-white: #F7F9F9;
+    --color-headline:        #212529;
+    --color-paragraph:       #495057;
+    --color-white:           #FFFFFF;
 
-    --nav-height: 7.2rem;
+    --nav-height:  7.2rem;
+    --shadow-card: 0 4px 16px rgba(0,0,0,0.08);
+    --transition:  all 0.3s ease;
 
-    font-size: 62.5%; /* 1rem = 10px */
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
 }
 
 body {
-    font-family: 'DM Sans';
+    font-family: 'DM Sans', sans-serif;
     font-size: 1.6rem;
-
-    text-align: center;
+    color: var(--color-paragraph);
+    overflow-x: hidden;
 }
 
+/* ======================== CONTAINER ================================*/
 .capadura {
-    width: 37.5rem;
-    margin-right: auto;
-    margin-left: auto;
+    width: min(50rem, 100%);
+    margin-inline: auto;
     padding-inline: 2.4rem;
 }
 
-/* ======================== HEADER ================================*/
-header {
-     margin-top: calc(4.1rem + var(--nav-height));
-
-}
-header::before {
-    content: "";
-    width: 100vw;
-    height: calc(108rem + var(--nav-height));
-    background-color: var(--primary-color-brand-green-light);
-    display: block;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-
-header h1 {
-    font-size: 3.4rem;
-    color: var(--secondary-color-gray-headline); 
-    line-height: 130%;    
-    margin-bottom: 2.4rem;
-}
-
-header h4 {
-    font-size: 1.4rem;
-    color: var(--primary-color-brand-green);
-    margin-bottom: 1.6rem;
-}
-
-header p{
-    font-size: 1.8rem;
-    line-height: 150%;
-    font-weight: 400;
-    color: var(--secondary-color-gray-paragraph);
-    margin-bottom: 3.2rem;
-}
-
-header button {
-    background: var(--primary-color-brand-green);
-
+/* ======================== BOTÕES ================================*/
+.btn-primary {
+    background-color: var(--color-brand-green);
     border: none;
     border-radius: 4rem;
-    margin-bottom: 6rem;
-
-    height: 6.2rem;
-    width: 26.3rem;
-    
-    color: var(--secondary-color-white);
-    text-transform: uppercase;
-    font-size: 1.4rem;
-    font-weight: 700;
-
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1.6rem;
 
-    margin-inline: auto;   /* pode usar os comandos margin-right: auto; margin-left: auto; */
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.08rem;
+    color: var(--color-white);
+    text-decoration: none;
+    text-transform: uppercase;
+
+    padding: 1.6rem 3.2rem;
+    height: 6.2rem;
+    width: fit-content;
+
+    transition: var(--transition);
 }
 
-header img{
-    image-rendering: auto;
-    width: 26.4rem;
-    display: block;
-    margin-inline: auto;
-    object-position: 0 2rem;
+.btn-primary:hover {
+    background-color: #006b54;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,133,111,0.3);
 }
 
-.box-principal {
-    width: 32.7rem;
-    padding-block: 4rem; /* simplificando os comandos padding top e botton */
-    margin-inline: auto;
-    
-    background-color: var(--primary-color-brand-beige);
-    border: 1px solid var(--primary-color-brand-green-light);
-    border-radius: 0.6rem;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 6rem;
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--color-brand-green);
+    color: var(--color-brand-green);
 }
 
-.box-segundario h3{
-    font-size: 4.8rem;
-    color: var(--secondary-color-gray-headline);
-    line-height: 130%;
-
-    margin-bottom: 0.4rem;
-}
-
-.box-segundario p {
-    margin: 0;
-    color: var(--primary-color-brand-green);
-    font-size: 1.6rem;
-    line-height: 1.6rem;
+.btn-outline:hover {
+    background-color: var(--color-brand-green);
+    color: var(--color-white);
+    transform: translateY(-2px);
 }
 
 /* ======================== NAVEGAÇÃO ================================*/
-
-nav {
-    display: flex;
-    height: var(--nav-height);
-
+.navbar {
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translate(-50%);
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: var(--color-brand-light);
+    transition: var(--transition);
 }
-nav.capadura {
+
+.navbar.rolagem {
+    background-color: var(--color-brand-green);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.navbar-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: var(--nav-height);
+    width: min(112rem, 100%);
+    margin-inline: auto;
+    padding-inline: 2.4rem;
 }
 
-nav.rolagem {
-    background: var(--primary-color-brand-green);
-    width: 100vw;
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 
-nav.img_logo svg:nth-child(1) path{
-    fill: var(--secondary-color-white);
+.navbar .logo img {
+    width: 12rem;
+    height: auto;
 }
 
-nav.img_logo svg:nth-child(2) path{
-    stroke: var(--secondary-color-white);
+/* Links desktop — ocultos em mobile */
+.menu-items {
+    display: none;
+    list-style: none;
+    gap: 3.2rem;
+    align-items: center;
 }
 
+.menu-items a {
+    color: var(--color-headline);
+    font-size: 1.4rem;
+    text-decoration: none;
+    transition: var(--transition);
+}
 
+.menu-items a:hover {
+    color: var(--color-brand-green);
+}
 
+.navbar.rolagem .menu-items a {
+    color: var(--color-white);
+}
+
+.navbar.rolagem .menu-items a:hover {
+    opacity: 0.8;
+}
+
+/* Botão "Agendar consulta" na navbar */
+.btn-agendar-nav {
+    display: none;
+    padding: 0.8rem 2.4rem;
+    border: 1.5px solid var(--color-brand-green);
+    border-radius: 4rem;
+    color: var(--color-brand-green);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.btn-agendar-nav:hover {
+    background-color: var(--color-brand-green);
+    color: var(--color-white);
+}
+
+.navbar.rolagem .btn-agendar-nav {
+    border-color: var(--color-white);
+    color: var(--color-white);
+}
+
+.navbar.rolagem .btn-agendar-nav:hover {
+    background-color: var(--color-white);
+    color: var(--color-brand-green);
+}
+
+/* Ícone hamburguer (mobile) */
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.menu-toggle img {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+/* Menu mobile expandível */
+.menu-mobile {
+    background-color: var(--color-brand-green);
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.menu-mobile.active {
+    max-height: 100vh;
+}
+
+.menu-mobile ul {
+    list-style: none;
+    padding: 2.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.menu-mobile a {
+    display: block;
+    padding: 1.2rem 0;
+    color: var(--color-white);
+    font-size: 1.8rem;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    transition: var(--transition);
+}
+
+.menu-mobile a:hover {
+    opacity: 0.75;
+}
+
+/* ======================== HERO ================================*/
+header#home {
+    background-color: var(--color-brand-light);
+    padding-top: calc(var(--nav-height) + 4rem);
+    overflow: hidden;
+}
+
+/* Container do hero como flexbox */
+header#home .capadura {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: min(112rem, 100%);
+    padding-inline: 2.4rem;
+}
+
+/* Bloco de texto (coluna esquerda no desktop) */
+.texto-hero {
+    text-align: center;
+    padding-bottom: 3.2rem;
+}
+
+.subtitulo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-brand-green);
+    letter-spacing: 0.08rem;
+    margin-bottom: 1.6rem;
+}
+
+.texto-hero h1 {
+    font-size: 3.4rem;
+    font-weight: 700;
+    line-height: 130%;
+    color: var(--color-headline);
+    margin-bottom: 2.4rem;
+}
+
+.texto-hero p {
+    font-size: 1.8rem;
+    line-height: 150%;
+    color: var(--color-paragraph);
+    margin-bottom: 3.2rem;
+}
+
+/* CTA centralizado em mobile */
+.texto-hero .btn-primary {
+    margin-inline: auto;
+}
+
+/* Foto da médica */
+.foto-hero {
+    display: block;
+    width: 26.4rem;
+    max-width: 100%;
+    margin-inline: auto;
+    align-self: flex-end;
+}
+
+/* ======================== ESTATÍSTICAS ================================*/
+.stats {
+    background-color: var(--color-brand-beige);
+    border-top: 1px solid var(--color-brand-light);
+    border-bottom: 1px solid var(--color-brand-light);
+}
+
+.stats-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    padding-block: 4rem;
+    width: min(112rem, 100%);
+    margin-inline: auto;
+    padding-inline: 2.4rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.stat-item h3 {
+    font-size: 4.8rem;
+    font-weight: 700;
+    color: var(--color-headline);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+}
+
+.stat-item span {
+    font-size: 1.6rem;
+    color: var(--color-brand-green);
+}
+
+/* Divisor (visível só no desktop) */
+.divisor {
+    display: none;
+    width: 1px;
+    height: 7rem;
+    background-color: var(--color-brand-light);
+}
+
+/* ======================== SEÇÕES ================================*/
+section {
+    padding-block: 8rem;
+}
+
+.section-header {
+    margin-bottom: 6rem;
+    text-align: center;
+}
+
+.section-header h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-headline);
+    line-height: 130%;
+    margin-top: 0.8rem;
+}
+
+/* ======================== SOBRE ================================*/
+section#sobre {
+    background-color: var(--color-white);
+}
+
+.sobre-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    width: min(112rem, 100%);
+    margin-inline: auto;
+    padding-inline: 2.4rem;
+}
+
+.sobre-imagem img {
+    width: 100%;
+    max-width: 48rem;
+    border-radius: 0.8rem;
+    display: block;
+}
+
+.sobre-texto {
+    text-align: center;
+}
+
+.sobre-texto h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-headline);
+    line-height: 130%;
+    margin-bottom: 2.4rem;
+}
+
+.sobre-texto p {
+    font-size: 1.6rem;
+    line-height: 160%;
+    color: var(--color-paragraph);
+    margin-bottom: 3.2rem;
+}
+
+.sobre-texto .btn-primary {
+    margin-inline: auto;
+}
+
+/* ======================== SERVIÇOS ================================*/
+section#servicos {
+    background-color: var(--color-brand-off-white);
+}
+
+.servicos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+}
+
+.servico-card {
+    background-color: var(--color-white);
+    border-radius: 0.8rem;
+    padding: 2.4rem;
+    text-align: left;
+    transition: var(--transition);
+    box-shadow: var(--shadow-card);
+}
+
+.servico-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.servico-card svg {
+    display: block;
+    margin-bottom: 2.4rem;
+}
+
+.servico-card h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-headline);
+    margin-bottom: 1.6rem;
+    line-height: 130%;
+}
+
+.servico-card p {
+    font-size: 1.6rem;
+    line-height: 160%;
+    color: var(--color-paragraph);
+}
+
+/* ======================== DEPOIMENTOS ================================*/
+section#depoimentos {
+    background-color: var(--color-white);
+}
+
+.depoimentos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+}
+
+.depoimento-card {
+    background-color: var(--color-brand-off-white);
+    border-radius: 0.8rem;
+    padding: 3.2rem 2.4rem;
+    text-align: left;
+    border-left: 4px solid var(--color-brand-green);
+}
+
+.depoimento-card > p {
+    font-size: 1.6rem;
+    line-height: 160%;
+    color: var(--color-paragraph);
+    margin-bottom: 2.4rem;
+    font-style: italic;
+}
+
+.depoimento-autor {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+}
+
+.avatar {
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 50%;
+    background-color: var(--color-brand-green);
+    color: var(--color-white);
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.depoimento-autor strong {
+    display: block;
+    font-size: 1.6rem;
+    color: var(--color-headline);
+    font-weight: 700;
+}
+
+.depoimento-autor span {
+    font-size: 1.4rem;
+    color: var(--color-paragraph);
+}
+
+/* ======================== AGENDAR (CTA) ================================*/
+section.agendar {
+    background-color: var(--color-brand-green);
+    text-align: center;
+}
+
+.agendar-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    width: min(112rem, 100%);
+    margin-inline: auto;
+    padding-inline: 2.4rem;
+}
+
+.agendar-texto h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-white);
+    line-height: 130%;
+    margin-bottom: 1.6rem;
+}
+
+.agendar-texto p {
+    font-size: 1.8rem;
+    line-height: 150%;
+    color: rgba(255,255,255,0.8);
+}
+
+/* Botão no fundo verde: bege/branco */
+.agendar .btn-primary {
+    background-color: var(--color-brand-beige);
+    color: var(--color-brand-green);
+    flex-shrink: 0;
+}
+
+.agendar .btn-primary svg path {
+    fill: var(--color-brand-green);
+}
+
+.agendar .btn-primary:hover {
+    background-color: var(--color-white);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+/* ======================== FOOTER ================================*/
+footer {
+    background-color: var(--color-headline);
+    padding-block: 6rem;
+}
+
+.footer-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.4rem;
+    width: min(112rem, 100%);
+    margin-inline: auto;
+    padding-inline: 2.4rem;
+}
+
+footer img {
+    width: 12rem;
+}
+
+footer p {
+    font-size: 1.4rem;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+}
+
+/* ================================================================
+   RESPONSIVO — TABLET / DESKTOP (768px+)
+================================================================ */
+@media (min-width: 768px) {
+
+    /* Container maior */
+    .capadura {
+        width: min(112rem, 100%);
+    }
+
+    /* ---- NAVBAR ---- */
+    .menu-toggle { display: none; }
+    .menu-mobile { display: none !important; }
+    .menu-items  { display: flex; }
+    .btn-agendar-nav { display: flex; align-items: center; }
+
+    /* ---- HERO: texto esquerda, foto direita ---- */
+    header#home .capadura {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 5.6rem;
+    }
+
+    .texto-hero {
+        flex: 1;
+        text-align: left;
+        padding-bottom: 7.2rem;
+        max-width: 48rem;
+    }
+
+    .texto-hero h1 { font-size: 4.7rem; }
+
+    /* CTA alinhado à esquerda */
+    .texto-hero .btn-primary { margin-inline: 0; }
+
+    .foto-hero {
+        width: 38rem;
+        flex-shrink: 0;
+        margin: 0;
+    }
+
+    /* ---- STATS: linha horizontal ---- */
+    .stats-inner {
+        flex-direction: row;
+        justify-content: center;
+        gap: 0;
+    }
+
+    .stat-item {
+        flex: 1;
+        align-items: center;
+        text-align: center;
+        padding-inline: 4rem;
+    }
+
+    .divisor { display: block; }
+
+    /* ---- SOBRE ---- */
+    .sobre-conteudo {
+        flex-direction: row;
+        align-items: center;
+        gap: 6.4rem;
+    }
+
+    .sobre-imagem { flex: 1; }
+    .sobre-imagem img { max-width: 100%; }
+
+    .sobre-texto {
+        flex: 1;
+        text-align: left;
+    }
+
+    .sobre-texto .btn-primary { margin-inline: 0; }
+
+    /* ---- SERVIÇOS ---- */
+    .servicos-grid { grid-template-columns: repeat(3, 1fr); }
+
+    /* ---- DEPOIMENTOS ---- */
+    .depoimentos-grid { grid-template-columns: repeat(3, 1fr); }
+
+    /* ---- AGENDAR ---- */
+    .agendar-conteudo {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .agendar-texto { flex: 1; }
+
+    /* ---- FOOTER ---- */
+    .footer-conteudo {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    footer p { text-align: right; }
+
+    /* ---- ESPAÇAMENTOS ---- */
+    section { padding-block: 12rem; }
+    .section-header h2 { font-size: 4rem; }
+}
+
+/* ================================================================
+   RESPONSIVO — LARGE DESKTOP (1200px+)
+================================================================ */
+@media (min-width: 1200px) {
+    .texto-hero h1 { font-size: 5.2rem; }
+    .foto-hero { width: 42rem; }
+}

@@ -1,54 +1,241 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DoctorCare</title>
-    <link rel="stylesheet" href="/style.css">
+    <meta name="description" content="DoctorCare - Assistência médica simplificada para todos. Agende sua consulta online com os melhores especialistas.">
+    <title>DoctorCare | Assistência Médica Online</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- ScrollReveal.js para animações ao rolar a página -->
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <script defer src="main.js"></script>
 </head>
-<body onscroll="ligarRolagem()">
-        <nav id="navegacao" class=""> <!-- termo em ingles "scroll" -->
-            <div class="capadura"> <!-- termo em ingles "wrapper" -->
-                <a class="logo" href="http://">
-                    <img class="img_logo" src="/assets/logo_b.svg" alt="">
-                </a>
-                    <img class="img_icon" src="/assets/icon_m.svg" alt="">
+<body>
 
-            </div>       
+    <!-- ========== NAVEGAÇÃO ========== -->
+    <nav id="navegacao" class="navbar">
+        <div class="capadura navbar-content">
+            <!-- Logo com link para o topo -->
+            <a class="logo" href="#home" aria-label="DoctorCare - Ir para o início">
+                <img src="assets/logo_b.svg" alt="Logo DoctorCare">
+            </a>
+
+            <!-- Menu links desktop -->
+            <ul class="menu-items" aria-label="Navegação principal">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+            </ul>
+
+            <!-- Botão de agendamento no menu (desktop) -->
+            <a href="#contato" class="btn-agendar-nav">Agendar consulta</a>
+
+            <!-- Ícone hamburguer para mobile -->
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile">
+                <img src="assets/icon_m.svg" alt="">
+            </button>
+        </div>
+
+        <!-- Menu expandível no mobile -->
+        <div class="menu-mobile" id="menu-mobile" aria-hidden="true">
+            <ul>
+                <li><a href="#home" onclick="closeMenu()">Início</a></li>
+                <li><a href="#sobre" onclick="closeMenu()">Sobre</a></li>
+                <li><a href="#servicos" onclick="closeMenu()">Serviços</a></li>
+                <li><a href="#depoimentos" onclick="closeMenu()">Depoimentos</a></li>
+                <li><a href="#contato" onclick="closeMenu()" class="destaque">Agendar consulta</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <header class="capadura">
-        <h4>BOAS-VINDAS A DOCTORCARE 👋</h4>
-        <h1>Assistência médica simplificada para todos</h1>
-        <p>Os médicos da DoctorCare vão além dos sintomas para tratar a causa raiz de sua doença e proporcionar uma cura a longo prazo.</p>
-        <button>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.8337 11.6667C13.667 11.5833 12.5837 11.0833 12.417 11C12.2503 10.9167 12.0837 10.9167 11.917 11.0833C11.7503 11.25 11.417 11.75 11.2503 11.9167C11.167 12.0833 11.0003 12.0833 10.8337 12C10.2503 11.75 9.66699 11.4167 9.16699 11C8.75033 10.5833 8.33366 10.0833 8.00033 9.58334C7.91699 9.41668 8.00033 9.25001 8.08366 9.16668C8.16699 9.08334 8.25033 8.91668 8.41699 8.83334C8.50033 8.75001 8.58366 8.58334 8.58366 8.50001C8.66699 8.41668 8.66699 8.25001 8.58366 8.16668C8.50033 8.08334 8.08366 7.08334 7.91699 6.66668C7.83366 6.08334 7.66699 6.08334 7.50033 6.08334C7.41699 6.08334 7.25033 6.08334 7.08366 6.08334C6.91699 6.08334 6.66699 6.25001 6.58366 6.33334C6.08366 6.83334 5.83366 7.41668 5.83366 8.08334C5.91699 8.83334 6.16699 9.58334 6.66699 10.25C7.58366 11.5833 8.75033 12.6667 10.167 13.3333C10.5837 13.5 10.917 13.6667 11.3337 13.75C11.7503 13.9167 12.167 13.9167 12.667 13.8333C13.2503 13.75 13.7503 13.3333 14.0837 12.8333C14.2503 12.5 14.2503 12.1667 14.167 11.8333C14.167 11.8333 14.0003 11.75 13.8337 11.6667ZM15.917 4.08334C12.667 0.833344 7.41699 0.833344 4.16699 4.08334C1.50033 6.75001 1.00033 10.8333 2.83366 14.0833L1.66699 18.3333L6.08366 17.1667C7.33366 17.8333 8.66699 18.1667 10.0003 18.1667C14.5837 18.1667 18.2503 14.5 18.2503 9.91668C18.3337 7.75001 17.417 5.66668 15.917 4.08334ZM13.667 15.75C12.5837 16.4167 11.3337 16.8333 10.0003 16.8333C8.75033 16.8333 7.58366 16.5 6.50033 15.9167L6.25033 15.75L3.66699 16.4167L4.33366 13.9167L4.16699 13.6667C2.16699 10.3333 3.16699 6.16668 6.41699 4.08334C9.66699 2.00001 13.8337 3.08334 15.8337 6.25001C17.8337 9.50001 16.917 13.75 13.667 15.75Z" fill="white"/>         
-            </svg> 
-            Agende sua consulta
-        </button>
-        <img src="/assets/foto.svg" alt="Mulher negra vestindo moletom verde, sorrindo com a mão no coração.">
-        <div class="box-principal">
-            <div class="box-segundario">
-                <h3>+3.500</h3>
-                <p>Pacientes atendidos</p>
-            </div>
-            <div class="box-segundario">
-                <h3>+15</h3>
-                <p>Especialistas disponíveis</p>
-            </div>   
-            <div class="box-segundario">
-                <h3>+10</h3>
-                <p>Anos no mercado</p>
-            </div>
-            
-        </div>        
-    </header>
-</body>
+    <!-- ========== HERO / INÍCIO ========== -->
+    <header id="home">
+        <div class="capadura">
+            <div class="texto-hero">
+                <!-- Subtítulo em destaque verde -->
+                <h4 class="subtitulo">BOAS-VINDAS À DOCTORCARE 👋</h4>
 
+                <!-- Título principal -->
+                <h1>Assistência médica <br>simplificada <br>para todos</h1>
+
+                <!-- Parágrafo descritivo -->
+                <p>Os médicos da DoctorCare vão além dos sintomas para tratar a causa raiz de sua doença e proporcionar uma cura a longo prazo.</p>
+
+                <!-- Botão CTA com ícone WhatsApp -->
+                <a href="https://wa.me/5511999999999" class="btn-primary" target="_blank" rel="noopener noreferrer">
+                    <!-- Ícone do WhatsApp (SVG inline) -->
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M13.8337 11.6667C13.667 11.5833 12.5837 11.0833 12.417 11C12.2503 10.9167 12.0837 10.9167 11.917 11.0833C11.7503 11.25 11.417 11.75 11.2503 11.9167C11.167 12.0833 11.0003 12.0833 10.8337 12C10.2503 11.75 9.66699 11.4167 9.16699 11C8.75033 10.5833 8.33366 10.0833 8.00033 9.58334C7.91699 9.41668 8.00033 9.25001 8.08366 9.16668C8.16699 9.08334 8.25033 8.91668 8.41699 8.83334C8.50033 8.75001 8.58366 8.58334 8.58366 8.50001C8.66699 8.41668 8.66699 8.25001 8.58366 8.16668C8.50033 8.08334 8.08366 7.08334 7.91699 6.66668C7.83366 6.08334 7.66699 6.08334 7.50033 6.08334C7.41699 6.08334 7.25033 6.08334 7.08366 6.08334C6.91699 6.08334 6.66699 6.25001 6.58366 6.33334C6.08366 6.83334 5.83366 7.41668 5.83366 8.08334C5.91699 8.83334 6.16699 9.58334 6.66699 10.25C7.58366 11.5833 8.75033 12.6667 10.167 13.3333C10.5837 13.5 10.917 13.6667 11.3337 13.75C11.7503 13.9167 12.167 13.9167 12.667 13.8333C13.2503 13.75 13.7503 13.3333 14.0837 12.8333C14.2503 12.5 14.2503 12.1667 14.167 11.8333C14.167 11.8333 14.0003 11.75 13.8337 11.6667ZM15.917 4.08334C12.667 0.833344 7.41699 0.833344 4.16699 4.08334C1.50033 6.75001 1.00033 10.8333 2.83366 14.0833L1.66699 18.3333L6.08366 17.1667C7.33366 17.8333 8.66699 18.1667 10.0003 18.1667C14.5837 18.1667 18.2503 14.5 18.2503 9.91668C18.3337 7.75001 17.417 5.66668 15.917 4.08334ZM13.667 15.75C12.5837 16.4167 11.3337 16.8333 10.0003 16.8333C8.75033 16.8333 7.58366 16.5 6.50033 15.9167L6.25033 15.75L3.66699 16.4167L4.33366 13.9167L4.16699 13.6667C2.16699 10.3333 3.16699 6.16668 6.41699 4.08334C9.66699 2.00001 13.8337 3.08334 15.8337 6.25001C17.8337 9.50001 16.917 13.75 13.667 15.75Z" fill="white"/>
+                    </svg>
+                    AGENDE SUA CONSULTA
+                </a>
+            </div>
+
+            <!-- Foto da médica (sobrepõe o fundo verde) -->
+            <img
+                class="foto-hero"
+                src="assets/foto.svg"
+                alt="Mulher negra vestindo moletom verde, sorrindo com a mão no coração."
+                loading="eager"
+            >
+        </div>
+
+        <!-- Caixa de estatísticas abaixo do hero -->
+        <div class="stats">
+            <div class="capadura stats-inner">
+                <div class="stat-item">
+                    <h3>+3.500</h3>
+                    <span>Pacientes atendidos</span>
+                </div>
+                <div class="divisor" aria-hidden="true"></div>
+                <div class="stat-item">
+                    <h3>+15</h3>
+                    <span>Especialistas disponíveis</span>
+                </div>
+                <div class="divisor" aria-hidden="true"></div>
+                <div class="stat-item">
+                    <h3>+10</h3>
+                    <span>Anos no mercado</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== SOBRE ========== -->
+    <section id="sobre">
+        <div class="capadura sobre-conteudo">
+            <div class="sobre-imagem">
+                <!-- Imagem ilustrativa (pode ser trocada) -->
+                <img src="assets/Foto.png" alt="Médicos da DoctorCare em reunião" loading="lazy">
+            </div>
+            <div class="sobre-texto">
+                <h2>Cuidando de você <br>com dedicação e <br>tecnologia</h2>
+                <p>Com mais de 10 anos no mercado, a DoctorCare nasceu para tornar o acesso à saúde mais simples, humano e eficiente. Nossa equipe de especialistas está preparada para oferecer o melhor cuidado médico a você e sua família.</p>
+                <a href="#contato" class="btn-primary btn-outline">Conheça nossa equipe</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SERVIÇOS ========== -->
+    <section id="servicos" class="servicos">
+        <div class="capadura">
+            <header class="section-header">
+                <h4 class="subtitulo">SERVIÇOS</h4>
+                <h2>Como podemos ajudar você?</h2>
+            </header>
+
+            <!-- Grade de cartões de serviço -->
+            <div class="servicos-grid">
+
+                <!-- Cartão 1 -->
+                <div class="servico-card">
+                    <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M10.8 27V16.2H16.2V27H22.95V13.5H27L13.5 1.35L0 13.5H4.05V27H10.8Z" fill="#00856F"/>
+                    </svg>
+                    <h3>Consultas Domiciliares</h3>
+                    <p>Atendimento médico no conforto da sua casa, com toda a segurança e qualidade que você merece.</p>
+                </div>
+
+                <!-- Cartão 2 -->
+                <div class="servico-card">
+                    <svg width="24" height="27" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M10.8 27V16.2H0V10.8H10.8V0H16.2V10.8H27V16.2H16.2V27H10.8Z" fill="#00856F"/>
+                    </svg>
+                    <h3>Tratamentos Especializados</h3>
+                    <p>Protocolos modernos e personalizados para tratar a raiz do seu problema e não apenas os sintomas.</p>
+                </div>
+
+                <!-- Cartão 3 -->
+                <div class="servico-card">
+                    <svg width="30" height="25" viewBox="0 0 30 25" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M20 12.5C20 14.4891 19.2098 16.3968 17.8033 17.8033C16.3968 19.2098 14.4891 20 12.5 20C10.5109 20 8.60322 19.2098 7.1967 17.8033C5.79018 16.3968 5 14.4891 5 12.5C5 10.5109 5.79018 8.60322 7.1967 7.1967C8.60322 5.79018 10.5109 5 12.5 5C14.4891 5 16.3968 5.79018 17.8033 7.1967C19.2098 8.60322 20 10.5109 20 12.5ZM12.5 0C11.837 0 11.2011 0.263392 10.7322 0.732233C10.2634 1.20107 10 1.83696 10 2.5V3.0625C8.075 3.4625 6.3125 4.3 4.8 5.5375L4.3 5.0375C3.83393 4.57265 3.20185 4.31138 2.54251 4.31138C1.88317 4.31138 1.25109 4.57265 0.785026 5.0375C0.31896 5.50234 0.0576935 6.13374 0.0576935 6.7925C0.0576935 7.45126 0.31896 8.08266 0.785026 8.5475L1.285 9.0475C0.375 10.8 0 12.5 0 12.5C0 12.5 0 14.2 0.9375 16.475L0.785026 16.4525C0.31896 16.9173 0.0576935 17.5487 0.0576935 18.2075C0.0576935 18.8663 0.31896 19.4977 0.785026 19.9625C1.25109 20.4274 1.88317 20.6886 2.54251 20.6886C3.20185 20.6886 3.83393 20.4274 4.3 19.9625L4.7625 19.5C6.275 20.6875 8.0375 21.5375 10 21.9375V22.5C10 23.163 10.2634 23.7989 10.7322 24.2678C11.2011 24.7366 11.837 25 12.5 25C13.163 25 13.7989 24.7366 14.2678 24.2678C14.7366 23.7989 15 23.163 15 22.5V21.9375C16.9625 21.5375 18.725 20.6875 20.2375 19.5L20.7 19.9625C21.1661 20.4274 21.7982 20.6886 22.4575 20.6886C23.1168 20.6886 23.7489 20.4274 24.215 19.9625C24.681 19.4977 24.9423 18.8663 24.9423 18.2075C24.9423 17.5487 24.681 16.9173 24.215 16.4525L23.7625 16C24.6625 14.2375 25 12.5 25 12.5C25 12.5 24.625 10.8 23.7125 9.05L24.215 8.5475C24.681 8.08266 24.9423 7.45126 24.9423 6.7925C24.9423 6.13374 24.681 5.50234 24.215 5.0375C23.7489 4.57265 23.1168 4.31138 22.4575 4.31138C21.7982 4.31138 21.1661 4.57265 20.7 5.0375L20.1875 5.55C18.6875 4.3125 16.925 3.4625 15 3.0625V2.5C15 1.83696 14.7366 1.20107 14.2678 0.732233C13.7989 0.263392 13.163 0 12.5 0Z" fill="#00856F"/>
+                    </svg>
+                    <h3>Acompanhamento Contínuo</h3>
+                    <p>Monitoramento permanente da sua saúde com equipe dedicada e tecnologia de ponta.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== DEPOIMENTOS ========== -->
+    <section id="depoimentos" class="depoimentos">
+        <div class="capadura">
+            <header class="section-header">
+                <h4 class="subtitulo">DEPOIMENTOS</h4>
+                <h2>O que nossos pacientes falam</h2>
+            </header>
+
+            <div class="depoimentos-grid">
+
+                <div class="depoimento-card">
+                    <p>"A DoctorCare transformou o jeito que cuido da minha saúde. Atendimento humanizado e ágil."</p>
+                    <div class="depoimento-autor">
+                        <div class="avatar">AN</div>
+                        <div>
+                            <strong>Ana Nunes</strong>
+                            <span>Paciente há 2 anos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="depoimento-card">
+                    <p>"Finalmente encontrei médicos que tratam a causa e não só os sintomas. Recomendo a todos!"</p>
+                    <div class="depoimento-autor">
+                        <div class="avatar">CS</div>
+                        <div>
+                            <strong>Carlos Silva</strong>
+                            <span>Paciente há 1 ano</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="depoimento-card">
+                    <p>"O atendimento domiciliar foi essencial para minha recuperação. Equipe incrível e dedicada."</p>
+                    <div class="depoimento-autor">
+                        <div class="avatar">MO</div>
+                        <div>
+                            <strong>Maria Oliveira</strong>
+                            <span>Paciente há 3 anos</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== AGENDAR (CONTATO) ========== -->
+    <section id="contato" class="agendar">
+        <div class="capadura">
+            <div class="agendar-conteudo">
+                <div class="agendar-texto">
+                    <h2>Pronto para cuidar <br>da sua saúde?</h2>
+                    <p>Agende sua primeira consulta agora. Nossa equipe está disponível para atender você da melhor forma possível.</p>
+                </div>
+                <a href="https://wa.me/5511999999999" class="btn-primary" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M13.8337 11.6667C13.667 11.5833 12.5837 11.0833 12.417 11C12.2503 10.9167 12.0837 10.9167 11.917 11.0833C11.7503 11.25 11.417 11.75 11.2503 11.9167C11.167 12.0833 11.0003 12.0833 10.8337 12C10.2503 11.75 9.66699 11.4167 9.16699 11C8.75033 10.5833 8.33366 10.0833 8.00033 9.58334C7.91699 9.41668 8.00033 9.25001 8.08366 9.16668C8.16699 9.08334 8.25033 8.91668 8.41699 8.83334C8.50033 8.75001 8.58366 8.58334 8.58366 8.50001C8.66699 8.41668 8.66699 8.25001 8.58366 8.16668C8.50033 8.08334 8.08366 7.08334 7.91699 6.66668C7.83366 6.08334 7.66699 6.08334 7.50033 6.08334C7.41699 6.08334 7.25033 6.08334 7.08366 6.08334C6.91699 6.08334 6.66699 6.25001 6.58366 6.33334C6.08366 6.83334 5.83366 7.41668 5.83366 8.08334C5.91699 8.83334 6.16699 9.58334 6.66699 10.25C7.58366 11.5833 8.75033 12.6667 10.167 13.3333C10.5837 13.5 10.917 13.6667 11.3337 13.75C11.7503 13.9167 12.167 13.9167 12.667 13.8333C13.2503 13.75 13.7503 13.3333 14.0837 12.8333C14.2503 12.5 14.2503 12.1667 14.167 11.8333C14.167 11.8333 14.0003 11.75 13.8337 11.6667ZM15.917 4.08334C12.667 0.833344 7.41699 0.833344 4.16699 4.08334C1.50033 6.75001 1.00033 10.8333 2.83366 14.0833L1.66699 18.3333L6.08366 17.1667C7.33366 17.8333 8.66699 18.1667 10.0003 18.1667C14.5837 18.1667 18.2503 14.5 18.2503 9.91668C18.3337 7.75001 17.417 5.66668 15.917 4.08334ZM13.667 15.75C12.5837 16.4167 11.3337 16.8333 10.0003 16.8333C8.75033 16.8333 7.58366 16.5 6.50033 15.9167L6.25033 15.75L3.66699 16.4167L4.33366 13.9167L4.16699 13.6667C2.16699 10.3333 3.16699 6.16668 6.41699 4.08334C9.66699 2.00001 13.8337 3.08334 15.8337 6.25001C17.8337 9.50001 16.917 13.75 13.667 15.75Z" fill="#00856F"/>
+                    </svg>
+                    AGENDE SUA CONSULTA
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="capadura footer-conteudo">
+            <img src="assets/logo_w.svg" alt="Logo DoctorCare">
+            <p>© 2024 DoctorCare · Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+</body>
 </html>
