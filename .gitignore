@@ -24,3 +24,5 @@ dist/
 # Misc
 .env
 *.local
+
+temp_nlw_doctor_care/
